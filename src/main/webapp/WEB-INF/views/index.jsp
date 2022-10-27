@@ -13,6 +13,10 @@
 
 </head>
 <body>
+<h2>${sessionScope.loginEmail}님 하이</h2>
+<h4>환영합니다(model) ${resultDTO.memberName}님</h4>
+<br>
+
 <a href="/saveIndex">회원 가입</a>
 <a href="/loginIndex">로그인</a>
 <a href="/memberList">회원 목록 출력</a>

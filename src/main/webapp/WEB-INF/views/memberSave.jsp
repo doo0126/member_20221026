@@ -19,12 +19,13 @@
 <body>
 <h3>회원가입</h3>
 <div class="container" id="save-form">
-<form action="/save" method="post">
+<form action="/save" method="post" name="saveForm">
    <input type="text" name="memberEmail"placeholder="이메일" class="form-control">
+    <span id="email-input"></span>
   <input type="text" name="memberPassword"placeholder="비밀번호" class="form-control">
    <input type="text" name="memberName"placeholder="이름" class="form-control">
   <input type="text" name="memberAge"placeholder="나이" class="form-control">
-    <input type="text" name="memberMobile">
+    <input type="text" name="memberMobile"placeholder="전화번호"class="form-control">
     <input type="button" value="회원가입" , onclick="save()" class="btn btn-primary">
     <!-- form 테그 안에서는 그냥button은 전송submit 역활 이기때문에 js로 호출 할려면 input button 사용한다 !-->
 </form>
@@ -33,6 +34,28 @@
 <script>
     const save = () => {
  console.log("save함수 호출");
+ if(document.saveForm.memberEmail.value ==""){
+     //alert("이메일을 입력해 주세요");
+       const emailcheck =document.getElementById("email-input");
+     emailcheck.innerHTML ="이메일입력"
+     emailcheck.style.color="red";
+        return false;
+ }
+ else if(document.saveForm.memberPassword.value == ""){
+     alert("비밀번호는 필수 입력")
+     return  false;
+ }
+ else if(document.saveForm.memberAge.value == ""){
+     alert("나이 필수 입력")
+     return  false;
+ }
+ else if(document.saveForm.memberMobile.value == ""){
+     alert("번호 필수 입력")
+     return  false;
+ }
+
+ document.saveForm.submit();
+console.log("세이브완료")
     }
 </script>
 </html>

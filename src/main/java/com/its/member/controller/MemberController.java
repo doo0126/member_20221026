@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 
@@ -33,13 +34,16 @@ public class MemberController {
 
 
     @PostMapping("/login")
-    public String login(@ModelAttribute MemberDTO memberDTO, Model model) {
+    public String login(@ModelAttribute MemberDTO memberDTO, Model model, HttpSession session) {
         MemberDTO resultDTO = memberService.login(memberDTO);
+
         if (resultDTO != null) {
             model.addAttribute("resultDTO", resultDTO);
+            /*세션에 로그인 사용자의 이메일을 저장 */
+            session.setAttribute("loginEmail",resultDTO.getMemberEmail());
             return "memberMain";
         } else {
-            return "false";
+            return "memberLogin";
         }
 
 

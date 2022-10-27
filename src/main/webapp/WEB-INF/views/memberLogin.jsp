@@ -11,8 +11,9 @@
     <title>로그인 화면</title>
 </head>
 <body>
+<div class="container" id="login-form"></div>
 <form action="/login" method="post">
-  이메일<input type="text" name="memberEmail"><br>
+  이메일<input type="text" name="memberEmail"placeholder="이메일"class="form-contoler">
   비밀번호<input  type="text" name="memberPassword"><br>
   <input  type="submit" value="확인">
 </form>
