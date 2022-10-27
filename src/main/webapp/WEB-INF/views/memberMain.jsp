@@ -14,8 +14,8 @@
 </head>
 <body>
 <div class="container">
-    <h2>${sessionScope.loginEmail}님 하이</h2>
-<h4>환영합니다(model) ${resultDTO.memberName}님</h4>
+    <h2>${sessionScope.loginEmail}님 </h2>
+
    <a href="/update?updateId=${resultDTO.memberId}">회원 정보 수정</a>
 <a href="/">index</a>
 </div>
