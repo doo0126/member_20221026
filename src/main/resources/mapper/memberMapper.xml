@@ -23,5 +23,8 @@
     <delete id="memberDelete" parameterType="long">
         delete from member_table where memberId=#{result}
     </delete>
+    <insert id="memberAdd" parameterType="int">
+        insert into member_table(memberEmail ,memberPassword , memberName , memberAge , memberMobile ) values (#{num1},1234 ,#{num1} ,20 ,010)
+    </insert>
 
 </mapper>

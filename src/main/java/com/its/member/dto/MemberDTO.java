@@ -6,7 +6,7 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
+
 public class MemberDTO {
     private long memberId = 0 ;
     private String memberEmail = "";
@@ -15,5 +15,14 @@ public class MemberDTO {
     private int memberAge = 0;
     private String memberMobile = "";
 
-
+    @Override
+    public String toString() {
+        return
+                "memberId=" + memberId +
+                ", memberEmail='" + memberEmail + '\'' +
+                ", memberPassword='" + memberPassword + '\'' +
+                ", memberName='" + memberName + '\'' +
+                ", memberAge=" + memberAge +
+                ", memberMobile='" + memberMobile + '\'' ;
+    }
 }

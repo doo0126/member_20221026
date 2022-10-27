@@ -9,6 +9,8 @@ import java.util.List;
 
 @Repository
 public class MemberRepository {
+    int num1 =0;
+    int num2 = 100;
     @Autowired
     private SqlSessionTemplate sql;
 
@@ -30,8 +32,17 @@ public MemberDTO member(long findId){
     System.out.println("findId = " + findId);
 return sql.selectOne("member.memberId",findId);
 }
-public int delete(long result){
-        return sql.delete("member.memberDelete",result);
+public List<MemberDTO> delete(long result){
+ sql.delete("member.memberDelete",result);
+    return sql.selectList("member.memberList");
+}
+public void add(){
+        for(int i ;num1<num2 ;num1++){
+            sql.insert("member.memberAdd",num1);
 
+        }
+        if(num1 == num2){
+            num2+=100;
+        }
 }
 }

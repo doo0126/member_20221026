@@ -23,7 +23,7 @@
 <button class="btn btn-primary" onclick="saveFn()">회원가입</button>
 <button class="btn btn-danger" onclick="loginFn()">로그인</button>
 <button class="btn btn-dark" onclick="listFn()">목록</button>
-
+<button class="btn btn-danger" onclick="add()">임시데이터 추가</button>
 
 </body>
 <script>
@@ -37,6 +37,9 @@
     }
     const listFn = () => {
         location.href ="/memberList";
+    }
+    const add = () =>{
+        location.href ="/add";
     }
 </script>
 </html>

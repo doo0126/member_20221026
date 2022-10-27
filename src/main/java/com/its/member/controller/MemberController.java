@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.lang.reflect.Member;
 import java.util.List;
 
 
@@ -67,20 +68,25 @@ public class MemberController {
     }
 
     @GetMapping("/delete")
-    public String delete(@RequestParam("result") long result) {
+    public String delete(@RequestParam("result") long result,Model model) {
 
-        boolean an = memberService.delete(result);
-        if (an) {
-            return "index";
+       List<MemberDTO> resultList= memberService.delete(result);
+        model.addAttribute("memberList", resultList);
+            return "memberList";
 
-        } else {
-            return "false";
-        }
+
     }
     //@GetMapping("/update")
     //public String update(@RequestParam("updateId") long updateId){
        // return ""
 
-
+@GetMapping("/add")
+    public String add(){
+        memberService.add();
+        return "index";
+}
     }
+
+
+
 //}

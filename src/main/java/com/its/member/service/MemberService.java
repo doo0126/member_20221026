@@ -42,14 +42,17 @@ public class MemberService {
     public MemberDTO member(long findId){
           return memberRepository.member(findId);
     }
-    public boolean delete(long result){
-   int num = memberRepository.delete(result);
-if(num >0){
-    return true;
-}
-else{
-    return false;
-}
+
+
+    public List<MemberDTO> delete(long result){
+   List<MemberDTO> resultList = memberRepository.delete(result);
+
+    return resultList;
+
+
+    }
+    public void add(){
+        memberRepository.add();
     }
 }
 
