@@ -45,4 +45,11 @@ public void add(){
             num2+=100;
         }
 }
+
+
+    public String emailDuplicateCheck(String memberEmail) {
+
+        return sql.selectOne("member.memberEmailCheck",memberEmail);
+
+    }
 }

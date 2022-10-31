@@ -16,8 +16,9 @@
 <div class="container">
     <h2>${sessionScope.loginEmail}님 </h2>
 
-   <a href="/update?updateId=${resultDTO.memberId}">회원 정보 수정</a>
+   <a href="/update?updateId=${sessionScope.loginEmail}">회원 정보 수정</a>
 <a href="/">index</a>
 </div>
+
 </body>
 </html>

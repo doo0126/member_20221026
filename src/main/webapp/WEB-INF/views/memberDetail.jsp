@@ -11,9 +11,12 @@
     <title>memberDetail</title>
 </head>
 <body>
-${result.memberName}의 정보는 ${result}
+${resultUpdate}
 
-    <a href="/delete?result=${result.memberId}">이 정보 회원 삭제</a>
+<form action="setUpdate" method="post">
+
+    <input  type="text" name="memberEmail" value="resulUpdate.Em">
+
 </form>
 
 </body>

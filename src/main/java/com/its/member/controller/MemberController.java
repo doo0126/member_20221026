@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.lang.reflect.Member;
@@ -76,17 +73,29 @@ public class MemberController {
 
 
     }
-    //@GetMapping("/update")
-    //public String update(@RequestParam("updateId") long updateId){
-       // return ""
+    @GetMapping("/update")
+    public String update(long updateId ,Model model){
+       MemberDTO resultUpdate = memberService.update(updateId);
+       model.addAttribute("resultUpdate",resultUpdate);
+       return "memberDetail";
 
+    }
 @GetMapping("/add")
     public String add(){
         memberService.add();
         return "index";
 }
+
+    @PostMapping("/duplicate-check")
+    public @ResponseBody String emailDuplicateCheck(@RequestParam("inputEmail") String memberEmail){
+       String checkResult= memberService.emailDuplicateCheck(memberEmail);
+    return checkResult;
+
+
+
+    }
     }
 
 
 
-//}
+

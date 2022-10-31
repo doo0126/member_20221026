@@ -26,5 +26,8 @@
     <insert id="memberAdd" parameterType="int">
         insert into member_table(memberEmail ,memberPassword , memberName , memberAge , memberMobile ) values (#{num1},1234 ,#{num1} ,20 ,010)
     </insert>
+    <select id="memberEmailCheck" parameterType="String" resultType="String">
+        select memberEmail from member_table where memberEmail=#{memberEmail}
+    </select>
 
 </mapper>

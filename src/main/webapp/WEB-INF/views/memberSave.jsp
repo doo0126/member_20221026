@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
 <html>
 <head>
+    <script src="/resources/js/jquery.js"></script>
     <title>회원가입</title>
     <style>
 #save-form{
@@ -20,7 +21,8 @@
 <h3>회원가입</h3>
 <div class="container" id="save-form">
 <form action="/save" method="post" name="saveForm">
-   <input type="text" name="memberEmail"placeholder="이메일" class="form-control">
+   <input type="text" name="memberEmail"placeholder="이메일" id ="memberEmail" class="form-control" onblur="emailDuplicateCheck() ">
+    <span id="email-dup-check"></span>
     <span id="email-input"></span>
   <input type="text" name="memberPassword"placeholder="비밀번호" class="form-control">
    <input type="text" name="memberName"placeholder="이름" class="form-control">
@@ -56,6 +58,32 @@
 
  document.saveForm.submit();
 console.log("세이브완료")
+    }
+    emailDuplicateCheck = () =>{
+        const email =document.getElementById("memberEmail").value;
+        const checkResult = document.getElementById("email-dup-check");
+        console.log(email);
+        $.ajax({
+            type:"post",
+            url:"/duplicate-check",
+            dataType:"text",
+            data:{inputEmail:email},
+            success:function (result){
+            console.log("checkResult:",result);
+            if(result == "ok"){
+                checkResult.innerHTML ="사용 가능";
+                checkResult.style.color ="green";
+            }
+            else{
+                checkResult.innerHTML = "사용 불가";
+                checkResult.style.color = "red";
+            }
+            },
+            error:function(){
+                console.log("실패");
+            }
+        });
+
     }
 </script>
 </html>

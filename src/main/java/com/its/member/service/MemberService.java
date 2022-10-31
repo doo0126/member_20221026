@@ -54,5 +54,19 @@ public class MemberService {
     public void add(){
         memberRepository.add();
     }
+
+    public MemberDTO update(long  loginEmail) {
+    return memberRepository.member(loginEmail);
+    }
+
+    public String emailDuplicateCheck(String memberEmail) {
+        String checkResult=memberRepository.emailDuplicateCheck(memberEmail);
+        if(checkResult == null){
+            return "ok";
+        }
+        else{
+            return "no";
+        }
+    }
 }
 
