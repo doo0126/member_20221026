@@ -38,7 +38,7 @@ public class MemberController {
         if (resultDTO != null) {
             model.addAttribute("resultDTO", resultDTO);
             /*세션에 로그인 사용자의 이메일을 저장 */
-            session.setAttribute("loginEmail",resultDTO.getMemberEmail());
+            session.setAttribute("loginEmail", resultDTO.getMemberEmail());
             return "memberMain";
         } else {
             return "memberLogin";
@@ -65,36 +65,42 @@ public class MemberController {
     }
 
     @GetMapping("/delete")
-    public String delete(@RequestParam("result") long result,Model model) {
+    public String delete(@RequestParam("result") long result, Model model) {
 
-       List<MemberDTO> resultList= memberService.delete(result);
+        List<MemberDTO> resultList = memberService.delete(result);
         model.addAttribute("memberList", resultList);
-            return "memberList";
+        return "memberList";
 
 
     }
+
     @GetMapping("/update")
-    public String update(long updateId ,Model model){
-       MemberDTO resultUpdate = memberService.update(updateId);
-       model.addAttribute("resultUpdate",resultUpdate);
-       return "memberDetail";
+    public String update(long updateId, Model model) {
+        MemberDTO resultUpdate = memberService.update(updateId);
+        model.addAttribute("resultUpdate", resultUpdate);
+        return "memberDetail";
 
     }
-@GetMapping("/add")
-    public String add(){
+
+    @GetMapping("/add")
+    public String add() {
         memberService.add();
         return "index";
-}
+    }
 
     @PostMapping("/duplicate-check")
-    public @ResponseBody String emailDuplicateCheck(@RequestParam("inputEmail") String memberEmail){
-       String checkResult= memberService.emailDuplicateCheck(memberEmail);
-    return checkResult;
-
+    public @ResponseBody String emailDuplicateCheck(@RequestParam("inputEmail") String memberEmail) {
+        String checkResult = memberService.emailDuplicateCheck(memberEmail);
+        return checkResult;
 
 
     }
+    @PostMapping("detail-ajax")
+    public @ResponseBody MemberDTO memberListAjax(@RequestParam("memberId") Long memberId){
+    return memberService.memberListAjax(memberId);
+
     }
+}
 
 
 

@@ -14,7 +14,7 @@
     </select>
 
     <select id ="memberList" resultType="member">
-        select * from member_table
+        select * from member_table order by memberEmail
     </select>
 
     <select id="memberId" resultType="member" parameterType="long">
@@ -29,5 +29,6 @@
     <select id="memberEmailCheck" parameterType="String" resultType="String">
         select memberEmail from member_table where memberEmail=#{memberEmail}
     </select>
+
 
 </mapper>

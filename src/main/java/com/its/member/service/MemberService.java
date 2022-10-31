@@ -68,5 +68,14 @@ public class MemberService {
             return "no";
         }
     }
+    public MemberDTO memberListAjax(Long memberId){
+        MemberDTO result =memberRepository.memberListAjax(memberId);
+        if(result != null){
+            return result;
+        }
+        else{
+            return null;
+        }
+    }
 }
 

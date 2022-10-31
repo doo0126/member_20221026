@@ -5,6 +5,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.lang.reflect.Member;
 import java.util.List;
 
 @Repository
@@ -32,7 +33,7 @@ public MemberDTO member(long findId){
     System.out.println("findId = " + findId);
 return sql.selectOne("member.memberId",findId);
 }
-public List<MemberDTO> delete(long result){
+public List<MemberDTO> delete(Long result){
  sql.delete("member.memberDelete",result);
     return sql.selectList("member.memberList");
 }
@@ -51,5 +52,8 @@ public void add(){
 
         return sql.selectOne("member.memberEmailCheck",memberEmail);
 
+    }
+    public MemberDTO memberListAjax(long memberId){
+        return sql.selectOne("member.memberId",memberId);
     }
 }

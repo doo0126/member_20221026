@@ -60,17 +60,18 @@
 console.log("세이브완료")
     }
     emailDuplicateCheck = () =>{
-        const email =document.getElementById("memberEmail").value;
+        const email =document.getElementById("memberEmail").value; // 아이디를 지정 해주고 가져옴
+
         const checkResult = document.getElementById("email-dup-check");
         console.log(email);
         $.ajax({
             type:"post",
             url:"/duplicate-check",
             dataType:"text",
-            data:{inputEmail:email},
-            success:function (result){
+            data:{inputEmail:email}, //memberEmail 의 값을  email에 담았다 그 변수 좌변은 java에서 쓰임
+            success:function (result){  // checkResult 반환 받고 ajax 성공이면 result로 받는다 타입은 text
             console.log("checkResult:",result);
-            if(result == "ok"){
+            if(result == "ok"){ //result text 형식이 ok면 아래 실행
                 checkResult.innerHTML ="사용 가능";
                 checkResult.style.color ="green";
             }
